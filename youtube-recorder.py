@@ -15,6 +15,7 @@ class YoutubeRecorder:
 
     def run(self):
         while True:
+            self.file_name = datetime.datetime.now().strftime('[%Y-%m-%d]%H%M%S')
             response = requests.get('https://www.youtube.com/channel/'+ self.channel_id + '/live')
             soup = bs(response.content, 'html.parser')
             stream_link = soup.find('link', attrs={'rel':'canonical'})
